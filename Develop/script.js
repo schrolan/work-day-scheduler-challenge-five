@@ -29,11 +29,22 @@ function changeColor () {
     })
 }
 
-window.addEventListener("load", (event) =>{
-    changeColor()
-})
 
+//Onclick function that is called in the HTML. This is why the id in the getElementById is just id and not a specific ID, that is determined in the HTML.
 function saveText(id) {
-    localStorage.setItem(document.getElementById("9").innerText, document.getElementById("9").innerText)
-    console.log(document.getElementById("9").innerText)
+    console.log(id)
+    console.log(document.getElementById(id))
+    //The key value pair, the key is the title and the value is what we want.
+    localStorage.setItem(id, document.getElementById(id).value)
+    console.log(document.getElementById(id).value)
+  }
+
+ //This is the function that puts the text back into the textArea once the page is loaded again.
+  function loadData() {
+    for (i = 9; i < 18; i++) {
+        //getItem pulls the value, which is why we are not using a key value pair here.
+        data = localStorage.getItem(i)
+        document.getElementById(i).value = data
+    }
+    changeColor()
   }
